@@ -5,10 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Canvas projekt</title>
-    <script src="./drawSmilie.js"></script>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">    
+    <link rel="stylesheet" href="./rangeSlider.css">
+    <script src="./draw.js"></script>
 </head>
 <body onload="draw()">
-    <canvas width="1250" height="550" style="background-color:aquamarine"></canvas>
+    <canvas width="1250" height="550" style="background-color:lightgray"></canvas>
     
+    <div class="slidecontainer">
+        <label>Antal prickar: <span id="dotText"></span></label><br>
+        <input type="range" min="1" max="120" step="1" class="slider" id="myRange" oninput="nrOfDotsChanged(value)" onchange="nrOfDotsChanged(value)">
+        <br>
+        <label>Multiplicera med: <span id="multiText"></span></label>
+        <input type="range" min="1" max="10" step="1" class="slider" id="multi" oninput="nrOfDotsChanged(value)" onchange="nrOfDotsChanged(value)">
+
+    </div>
+    <script>
+          var slider = document.getElementById("myRange");
+          var output = document.getElementById("dotText");
+          output.innerHTML = slider.value;
+          
+          slider.oninput = function() {
+            output.innerHTML = this.value;
+          }
+
+          var sliderSec = document.getElementById("multi");
+          var outputSec = document.getElementById("multiText");
+          outputSec.innerHTML = sliderSec.value;
+          
+          sliderSec.oninput = function() {
+            outputSec.innerHTML = this.value;
+          }
+    </script>
 </body>
 </html>
